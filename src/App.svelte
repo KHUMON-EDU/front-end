@@ -1,6 +1,6 @@
 <script>
   import Router from 'svelte-spa-router'
-  import Home from "./route/LoginPage.svelte";
+  import routes from "./routes"
 </script>
 
 <head>
@@ -8,11 +8,7 @@
 	<meta name="supported-color-schemes" content="light"/>
 </head>
 
-<Router
-  routes={{
-    "/": Home,
-  }}
-/>
+<Router {routes} />
 
 <style>
 

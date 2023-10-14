@@ -8,17 +8,17 @@
 <div style="width: 40%; height: 1px; background-color: lightgrey; margin: auto"></div>
 </div>
 
-<div style="margin:auto; width: 60%; height: 100%; display:flex; justify-content: space-between;">
+<div style="margin:auto; width: 60%; height: 100%; display:col; justify-content: space-between; flex-direction:column">
     <div>
-        <img src="images/google_logo.png" alt="logo" width="70%" >
+        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="100%" ></a>
     </div>
 
     <div>
-        <img src="images/facebook_logo.png" alt="logo"  width="70%">
+        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="100%"></a>
     </div>
 
     <div>
-        <img src="images/apple_logo.png" alt="logo"  width="70%">
+        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="100%"></a>
     </div>
 
 </div>

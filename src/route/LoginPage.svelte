@@ -1,3 +1,17 @@
+<script>
+    import MainPage from "./MainPage.svelte";
+
+    let id = sessionStorage.getItem("id")
+    let accessCode = sessionStorage.getItem("access-code")
+    let nickName = sessionStorage.getItem("nickname")
+
+
+</script>
+
+{#if accessCode}
+<MainPage/>
+
+{:else}
 <img src="images/khu_mon_logo.png" alt="logo" width="50%" style=" margin-bottom: 5%;">
 
 
@@ -10,16 +24,17 @@
 
 <div style="margin:auto; width: 60%; height: 100%; display:col; justify-content: space-between; flex-direction:column">
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="100%" ></a>
+        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="70%" ></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="100%"></a>
+        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="70%"></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="100%"></a>
+        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="70%"></a>
     </div>
 
 </div>
 
+{/if}

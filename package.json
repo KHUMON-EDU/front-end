@@ -4,16 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@sveltech/routify": "^1.9.10",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "svelte": "^4.0.5",
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "query-string": "^8.1.0",
+    "svelte-file-dropzone": "^2.0.2",
     "svelte-spa-router": "^3.3.0"
   }
 }

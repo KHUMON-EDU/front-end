@@ -1,6 +1,7 @@
 <script>
     import LoginPage from "./LoginPage.svelte";
 
+
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")

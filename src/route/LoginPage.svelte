@@ -24,15 +24,15 @@
 
 <div style="margin:auto; width: 60%; height: 100%; display:col; justify-content: space-between; flex-direction:column">
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="70%" ></a>
+        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="50%" ></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="70%"></a>
+        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="50%"></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="70%"></a>
+        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="50%"></a>
     </div>
 
 </div>

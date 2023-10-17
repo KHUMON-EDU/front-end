@@ -12,10 +12,11 @@
       files.accepted = [...files.accepted, ...acceptedFiles];
       files.rejected = [...files.rejected, ...fileRejections];
       console.log(e.detail.acceptedFiles)
-
-      axios.post("http://localhost:8080/api/learning-material",{
-        headers:{"Authorization": sessionStorage.getItem("access-code"),"Content-Type": "multipart/form-data"},
-        body :{"data" : {"title":"강의자료", "content":"학습량"}, "media":e.detail.acceptedFiles}
+      let formData = new FormData()
+      formData.append("data", JSON.stringify({"title":"강의자료", "content":"학습량"}))
+      formData.append("media", e.detail.acceptedFiles)
+      axios.post("http://localhost:8080/api/learning-material",{body:{media:e.detail.acceptedFiles}},{
+        headers:{"Authorization": sessionStorage.getItem("access-code"),"content-type": "multipart/form-data"},
       }).then(
         response => console.log(response)
       )

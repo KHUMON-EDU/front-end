@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
+          
+      - name: npm upgade
+        run: npm install -g npm
+        
       - name: Install dependencies
         run: npm install
-
-      - name: Build Svelte app
-        run: npm run dev
 
       - name: Transfer files to EC2
         uses: appleboy/scp-action@master
@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.EC2_IP_ADDRESS }}
           username: your-ssh-username
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ./public/ # Svelte build output directory
+          source: .
           target: /var/www/html/ # Nginx or Apache web root directory on EC2
 
       - name: SSH into EC2
@@ -39,5 +39,4 @@ jobs:
           host: ${{ secrets.EC2_IP_ADDRESS }}
           username: your-ssh-username
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            sudo service nginx reload # Reload Nginx or restart your web server
+          script: npm run dev

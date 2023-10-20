@@ -31,12 +31,14 @@ jobs:
           username: your-ssh-username
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: .
-          target: /var/www/html/ # Nginx or Apache web root directory on EC2
-
+          target: test
       - name: SSH into EC2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_IP_ADDRESS }}
           username: your-ssh-username
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: npm run dev
+          script: |
+            cd test
+            npm install # 애플리케이션 종속성 설치
+            npm run dev # 또는 다른 서버 실행 명령

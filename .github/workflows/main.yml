@@ -37,6 +37,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd test
-            sudo apt-get install npm
+            sudo yum install npm -y
             npm install # 애플리케이션 종속성 설치
             npm run dev # 또는 다른 서버 실행 명령

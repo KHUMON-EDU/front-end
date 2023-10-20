@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Transfer files to EC2
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@0.1.9
         with:
           host: ${{ secrets.EC2_IP_ADDRESS }}
           username: your-ssh-username
@@ -30,7 +30,7 @@ jobs:
           source: .
           target: test
       - name: SSH into EC2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@0.1.9
         with:
           host: ${{ secrets.EC2_IP_ADDRESS }}
           username: your-ssh-username

@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Svelte app
-        run: npm run build
+        run: npm run dev
 
       - name: Transfer files to EC2
         uses: appleboy/scp-action@master

@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: 16
         
-      - name: Install dependencies
-        run: npm install
-
       - name: Transfer files to EC2
         uses: appleboy/scp-action@master
         with:
@@ -36,7 +33,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd test
             sudo yum install npm -y
-            npm install # 애플리케이션 종속성 설치
-            npm run dev # 또는 다른 서버 실행 명령
+            sudo yum install docker -y
+            cd test
+            docker build --tag dockerfile:0.1 .
+            docker run –name dockerC -d -p 3000:3000 dockerfile:0.1
+
+            

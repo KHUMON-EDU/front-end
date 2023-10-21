@@ -9,11 +9,6 @@ COPY ./src ./src
 COPY ./public ./public
 RUN npm install
 
-RUN npm install regexparam
-RUN npm install axios
-COPY ./node_modules/regexparam/package.json ./node_modules/regexparam/package.json
-
-
 
 
 COPY . ./

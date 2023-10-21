@@ -36,6 +36,8 @@ jobs:
           script: |
             sudo yum install npm -y
             sudo yum install docker -y
+            sudo systemctl start docker
+            sudo systemctl enable docker
             cd test
             docker build --tag dockerfile:0.1 .
             docker run –name dockerC -d -p 3000:3000 dockerfile:0.1

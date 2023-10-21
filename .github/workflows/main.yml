@@ -37,6 +37,7 @@ jobs:
             sudo yum install npm -y
             sudo yum install docker -y
             sudo systemctl start docker
+            sudo chmod 666 /var/run/docker.sock
             sudo systemctl enable docker
             cd test
             docker build --tag dockerfile:0.1 .

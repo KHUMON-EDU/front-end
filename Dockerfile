@@ -1,6 +1,6 @@
 FROM node:12 AS build
 
-WORKDIR /app
+WORKDIR /test
 
 COPY package.json ./
 COPY package-lock.json ./

@@ -26,6 +26,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: .
           target: test
+          
       - name: SSH into EC2
         uses: appleboy/ssh-action@master
         with:

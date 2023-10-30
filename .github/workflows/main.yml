@@ -44,6 +44,6 @@ jobs:
             ttink1245!
             cd test
             docker build --tag front-end .
-            docker run –t front-container -d -p 80:80 front-end
+            docker run -d -p 80:80 front-end
 
             

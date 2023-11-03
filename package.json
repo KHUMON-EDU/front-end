@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^1.5.1",
     "flowbite-svelte": "^0.44.19",
+    "flowbite-svelte-icons": "^0.4.5",
     "pnpm": "^8.10.2",
     "query-string": "^8.1.0",
     "svelte-file-dropzone": "^2.0.2",

@@ -36,6 +36,7 @@ jobs:
           script: |
             cd test
             sudo apt-get install npm
+            nvm use 18
             sudo npm install
             sudo npm run build
             sudo cp -r dist/* /usr/share/nginx/html/

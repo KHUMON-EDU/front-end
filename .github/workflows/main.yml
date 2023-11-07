@@ -22,7 +22,7 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_IP }}
-          username: ec2-user
+          username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: .
           target: test
@@ -31,7 +31,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_IP }}
-          username: ec2-user
+          username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             sudo apt-get install npm -y

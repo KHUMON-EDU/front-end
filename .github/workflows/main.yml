@@ -34,8 +34,8 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo yum install npm -y
-            sudo yum install docker -y
+            sudo apt-get install npm -y
+            sudo apt-get install docker.io -y
             sudo systemctl start docker
             sudo chmod 666 /var/run/docker.sock
             sudo systemctl enable docker

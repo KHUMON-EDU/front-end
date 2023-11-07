@@ -34,16 +34,12 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo apt-get install npm -y
-            sudo apt-get install docker.io -y
-            sudo systemctl start docker
-            sudo chmod 666 /var/run/docker.sock
-            sudo systemctl enable docker
-            docker login
-            van133
-            ttink1245!
             cd test
-            docker build --tag front-end .
-            docker run -d -p 80:80 front-end
+            sudo apt-get install npm
+            sudo npm install
+            sudo npm run build
+            sudocp -r dist/* /usr/share/nginx/html/
+            sudo systemctl stop nginx
+            sudo systemctl start nginx
 
             

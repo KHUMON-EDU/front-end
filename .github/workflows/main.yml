@@ -35,7 +35,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd test
-            sudo apt-get install npm
             nvm use 18
             sudo npm install
             sudo npm run build

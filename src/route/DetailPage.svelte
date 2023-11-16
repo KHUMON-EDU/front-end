@@ -77,6 +77,9 @@ let problems = [
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">요약</h5>
                 <P align={'left'}>K-평균은 클러스터링 방법으로, 클러스터 중심의 초기 위치를 기반으로 각 샘플을 가장 가까운 클러스터에 할당합니다.<br> 중심 K-평균 알고리즘은 할당된 샘플의 평균을 사용하여 클러스터 중심의 위치를 업데이트합니다.<br> 샘플을 클러스터에 할당하고 클러스터 중심을 업데이트하는 과정이 반복됩니다.<br> K-평균 모델을 훈련하기 전에 데이터 준비가 필요합니다.<br> 첫 번째 클러스터는 가장 가까운 샘플을 기반으로 결정됩니다.<br> squeeze=True인 경우, 샘플의 수가 10보다 작으면 첫 번째 클러스터에서 오류가 발생할 수 있습니다.<br> 두 번째와 세 번째 클러스터는 가장 가까운 샘플을 기반으로 결정됩니다.<br> 클러스터 중심은 슬라이싱 연산을 사용하여 얻을 수 있습니다.<br> 팔꿈치 방법은 k 값을 증가시키고 관성(클러스터 중심과 할당된 샘플 간의 제곱 거리의 합)를 계산하여 최적의 k 값을 찾는 데 사용됩니다.<br> 최적의 k는 관성 감소율이 둔화하기 시작하는 지점에서 선택됩니다</P>
             </Card>
+            <div class="w-full">
+              <a href="/"><img src="images/khu_mon_logo.png" alt="logo" width="50%" style=" margin-bottom: 5%;" class=" justify-items-center ml-28"></a>
+            </div>
         </div>
     </div>
     <div class=" ml-2">
@@ -84,16 +87,8 @@ let problems = [
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">문제</h5>
             {#each problems as problem}
             <P align={'left'} class = " font-extrabold mb-4">Q{problem.problem_no}. {problem.question}</P>
-            {#if isOpenedAnswer}
-            <button style="width: 3%;" on:click={changeIsOpenedAnswer}></button>
-            {/if}
-            {#if !isOpenedAnswer}
-            <button style="width: 3%;" on:click={changeIsOpenedAnswer}></button>
-            {/if}
-
-            {#if isOpenedAnswer}
-            <P align={'left'} class = " font-extrabold mb-4">정답 : {problem.answer}</P>
-            {/if}
+            <Button id="b{problem.problem_no}" color="alternative" disabled >정답</Button>
+            <Popover class="w-64 text-sm font-light" triggeredBy="#b{problem.problem_no}"><P align={'left'} class = " font-extrabold mb-4">정답 : {problem.answer}</P></Popover>
             {/each}
         </Card>
     </div>

@@ -1,10 +1,16 @@
 <script>
     import LoginPage from "./LoginPage.svelte";
+    import axios from 'axios'
     import { SpeedDial,P,Search,Button,Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox, TableSearch } from 'flowbite-svelte';
     import {PlusSolid} from 'flowbite-svelte-icons'
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
+    axios.get("http://localhost:8080/api/learning-materials",{
+        headers:{"Authorization":"Bearer " + accessCode},
+      }).then(
+        response => console.log(response)
+      )
 
 </script>
 
@@ -45,7 +51,7 @@
     <TableBody tableBodyClass="divide-y">
       <TableBodyRow>
         <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
+        <TableBodyCell><a href="#/detail_page" style="color: black;">인공지능 프로그래밍</a></TableBodyCell>
         <TableBodyCell>MP4</TableBodyCell>
         <TableBodyCell>5개</TableBodyCell>
         <TableBodyCell>2023.01.03</TableBodyCell>

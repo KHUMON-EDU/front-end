@@ -6,7 +6,7 @@
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
-    axios.get("http://localhost:8080/api/learning-materials",{
+    axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
         response => console.log(response)

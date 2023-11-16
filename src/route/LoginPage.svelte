@@ -25,15 +25,15 @@
 
 <div style="margin:auto; width: 40%; height: 100%; display:col; justify-content: space-between; flex-direction:column">
     <div class=" justify-center">
-        <a href="http://localhost:8080/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="100%" class=" justify-center"></a>
+        <a href="https://khumon-edu.kro.kr/oauth2/authorization/google"><img src="images/google_login.png" alt="logo" width="100%" class=" justify-center"></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="100%"></a>
+        <a href="https://khumon-edu.kro.kr/oauth2/authorization/kakao"><img src="images/kakao_login.png" alt="logo"  width="100%"></a>
     </div>
 
     <div>
-        <a href="http://localhost:8080/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="100%"></a>
+        <a href="https://khumon-edu.kro.kr/oauth2/authorization/naver"><img src="images/naver_login.png" alt="logo"  width="100%"></a>
     </div>
 
 </div>

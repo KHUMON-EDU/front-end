@@ -26,10 +26,10 @@ jobs:
           host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          shell: bash -l -eo pipefail {0}
+          run: nvm use 18
           script: |
             cd test
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            nvm use 18
             npm install
             npm run build
             sudo cp -r dist/* /usr/share/nginx/html/

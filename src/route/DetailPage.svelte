@@ -2,6 +2,8 @@
 import {Button,Popover,Heading,Video, Card,P} from 'flowbite-svelte';
 
 let isOpenedAnswer = false;
+
+
 const changeIsOpenedAnswer = () => {
     isOpenedAnswer = !isOpenedAnswer;
 }

@@ -53,11 +53,11 @@
         {#each data as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-          <TableBodyCell><a href="#/detail_page" style="color: black;">item.title</a></TableBodyCell>
+          <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>
           <TableBodyCell>MP4</TableBodyCell>
           <TableBodyCell>5개</TableBodyCell>
-          <TableBodyCell>item.createAt</TableBodyCell>
-          <TableBodyCell>item.modifiedAt</TableBodyCell>
+          <TableBodyCell>{item.createAt}</TableBodyCell>
+          <TableBodyCell>{item.modifiedAt}</TableBodyCell>
           <TableBodyCell>
             <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
           </TableBodyCell>

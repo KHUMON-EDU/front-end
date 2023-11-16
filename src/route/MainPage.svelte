@@ -6,10 +6,11 @@
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
+    let data
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
-        response => console.log(response)
+        response => data = response
       )
 
 </script>
@@ -49,50 +50,19 @@
       </TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell><a href="#/detail_page" style="color: black;">인공지능 프로그래밍</a></TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
+        {#each data as item}
+        <TableBodyRow>
+          <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
+          <TableBodyCell><a href="#/detail_page" style="color: black;">item.title</a></TableBodyCell>
+          <TableBodyCell>MP4</TableBodyCell>
+          <TableBodyCell>5개</TableBodyCell>
+          <TableBodyCell>item.createAt</TableBodyCell>
+          <TableBodyCell>item.modifiedAt</TableBodyCell>
+          <TableBodyCell>
+            <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
+          </TableBodyCell>
+        </TableBodyRow>
+        {/each}
     </TableBody>
   </Table>
 </div>

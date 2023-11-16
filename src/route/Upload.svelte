@@ -40,9 +40,9 @@
     return name
   };
 
-  function send(){
+  async function send(){
 
-    axios.post("https://khumon-edu.kro.kr/api/learning-material",{
+    await axios.post("https://khumon-edu.kro.kr/api/learning-material",{
         media:file,
         data:JSON.stringify({"title":title, "content":content})
       },
@@ -51,9 +51,9 @@
       }).then(
         response => {
           console.log(response)
+          window.location.href = '/'
         }
       )
-    window.location.href = '/'
   }
 
   </script>

@@ -30,8 +30,8 @@ jobs:
             cd test
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
             nvm use 18
-            sudo npm install
-            sudo npm run build
+            npm install
+            npm run build
             sudo cp -r dist/* /usr/share/nginx/html/
             sudo systemctl stop nginx
             sudo systemctl start nginx

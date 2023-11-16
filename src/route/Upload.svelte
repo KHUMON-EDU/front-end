@@ -42,7 +42,7 @@
 
   function send(){
 
-    axios.post("http://localhost:8080/api/learning-material",{
+    axios.post("https://khumon-edu.kro.kr/api/learning-material",{
         media:file,
         data:JSON.stringify({"title":title, "content":content})
       },

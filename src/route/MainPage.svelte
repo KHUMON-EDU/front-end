@@ -7,11 +7,12 @@
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
     let data = []
+  
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
         response => {
-          data = response.content
+          data = response.data.content
           console.log(data)
         }
       )
@@ -62,8 +63,8 @@
           <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>
           <TableBodyCell>{item.type}</TableBodyCell>
           <TableBodyCell>10개</TableBodyCell>
-          <TableBodyCell>{item.createAt}</TableBodyCell>
-          <TableBodyCell>{item.modifiedAt}</TableBodyCell>
+          <TableBodyCell>{(new Date(item.createAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+          <TableBodyCell>{(new Date(item.modifiedAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
           <TableBodyCell>
             <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
           </TableBodyCell>

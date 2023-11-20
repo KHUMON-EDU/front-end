@@ -42,7 +42,7 @@
       <TableHeadCell>-</TableHeadCell>
       <TableHeadCell>노트 이름</TableHeadCell>
       <TableHeadCell>파일 형태</TableHeadCell>
-      <TableHeadCell>문자 개수</TableHeadCell>
+      <TableHeadCell>문제 개수</TableHeadCell>
       <TableHeadCell>만든 날짜</TableHeadCell>
       <TableHeadCell>수정 날짜</TableHeadCell>
       <TableHeadCell>
@@ -54,8 +54,8 @@
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
           <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>
-          <TableBodyCell>MP4</TableBodyCell>
-          <TableBodyCell>5개</TableBodyCell>
+          <TableBodyCell>{item.type}</TableBodyCell>
+          <TableBodyCell>10개</TableBodyCell>
           <TableBodyCell>{item.createAt}</TableBodyCell>
           <TableBodyCell>{item.modifiedAt}</TableBodyCell>
           <TableBodyCell>

@@ -37,6 +37,7 @@
   </div>
 </div>
 
+{#key data}
   <Search class="mb-2 mt-2">
     <Button>Search</Button>
   </Search>
@@ -68,8 +69,9 @@
         {/each}
     </TableBody>
   </Table>
-</div>
+  {/key}
 
+</div>
 
 {:else}
     <LoginPage />

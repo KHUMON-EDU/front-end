@@ -11,5 +11,5 @@ export default {
     "/oauth2/login" : OauthLogin,
     "/logout" : LogOut,
     "/upload" : Upload,
-    "/detail_page" : DetailPage
+    "/detail_page/:id" : DetailPage
 };

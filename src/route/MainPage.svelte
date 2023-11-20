@@ -60,7 +60,7 @@
         {#each data as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-          <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>
+          <TableBodyCell><a href="#/detail_page/{item.id}" style="color: black;">{item.title}</a></TableBodyCell>
           <TableBodyCell>{item.type}</TableBodyCell>
           <TableBodyCell>10개</TableBodyCell>
           <TableBodyCell>{(new Date(item.createAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>

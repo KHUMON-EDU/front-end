@@ -55,7 +55,7 @@
     </TableHead>
     <TableBody tableBodyClass="divide-y">
       {#if data}
-        {#each data as item}
+        {#each data.content as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
           <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>

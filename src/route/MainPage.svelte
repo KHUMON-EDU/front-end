@@ -6,13 +6,13 @@
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
-    let data = {'content':[]}
+    let data = []
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
         response => {
-          data.content.concat(response)
-          console.log(response)
+          data = response.content
+          console.log(data)
         }
       )
 
@@ -38,6 +38,7 @@
 </div>
 
 
+
   <Search class="mb-2 mt-2">
     <Button>Search</Button>
   </Search>
@@ -54,8 +55,8 @@
       </TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
-      {#key data.content}
-        {#each data.content as item}
+      {#key data}
+        {#each data as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
           <TableBodyCell><a href="https://khumon-edu.kro.kr/api/learning-material/{item.id}" style="color: black;">item.title</a></TableBodyCell>
@@ -74,8 +75,8 @@
 
 
 </div>
-
 {:else}
+
     <LoginPage />
 
 

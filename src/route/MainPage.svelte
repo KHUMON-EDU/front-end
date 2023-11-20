@@ -11,7 +11,7 @@
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
         response => {
-          data = response
+          data.concat(response)
           console.log(response)
         }
       )

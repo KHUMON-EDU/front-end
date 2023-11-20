@@ -37,7 +37,7 @@
   </div>
 </div>
 
-{#key data.content}
+
   <Search class="mb-2 mt-2">
     <Button>Search</Button>
   </Search>
@@ -54,7 +54,7 @@
       </TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
-      {#if data.content}
+      {#key data.content}
         {#each data.content as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
@@ -68,10 +68,10 @@
           </TableBodyCell>
         </TableBodyRow>
         {/each}
-        {/if}
+        {/key}
     </TableBody>
   </Table>
-  {/key}
+
 
 </div>
 

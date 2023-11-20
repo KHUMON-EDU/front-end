@@ -54,6 +54,7 @@
       </TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
+      {#if data}
         {#each data as item}
         <TableBodyRow>
           <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
@@ -67,6 +68,7 @@
           </TableBodyCell>
         </TableBodyRow>
         {/each}
+        {/if}
     </TableBody>
   </Table>
   {/key}

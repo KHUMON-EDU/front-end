@@ -6,7 +6,7 @@
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
-    let data
+    let data = []
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(

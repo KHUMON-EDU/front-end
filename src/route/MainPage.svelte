@@ -10,7 +10,10 @@
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
-        response => data = response
+        response => {
+          data = response
+          console.log(response)
+        }
       )
 
 </script>

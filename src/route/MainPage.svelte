@@ -37,7 +37,7 @@
   </div>
 </div>
 
-{#key data}
+{#key data.content}
   <Search class="mb-2 mt-2">
     <Button>Search</Button>
   </Search>

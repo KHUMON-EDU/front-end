@@ -5,7 +5,7 @@ import axios from 'axios'
 export let params
 let isOpenedAnswer = false;
 console.log(params.id)
-let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTUzNTczNzQzODM3MDE5MzQ5OTgiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAwNTU0Njg5LCJleHAiOjE3MDExNTk0ODl9.01a2RjnU3vjQeVAwFVDc47p4-mJ4tdebf8RDkhK1gI0"//sessionStorage.getItem("access-code")
+let accessCode = sessionStorage.getItem("access-code")
 let data = []
 let problems = []
 let title = ""

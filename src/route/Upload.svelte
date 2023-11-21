@@ -42,7 +42,7 @@
 
   async function send(){
 
-    await axios.post("https://khumon-edu.kro.kr/api/learning-material",{
+    axios.post("https://khumon-edu.kro.kr/api/learning-material",{
         media:file,
         data:JSON.stringify({"title":title, "content":content})
       },

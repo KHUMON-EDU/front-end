@@ -5,7 +5,7 @@ import axios from 'axios'
 export let params
 let isOpenedAnswer = false;
 console.log(params.id)
-let accessCode = sessionStorage.getItem("access-code")
+let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTUzNTczNzQzODM3MDE5MzQ5OTgiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAwNTU0Njg5LCJleHAiOjE3MDExNTk0ODl9.01a2RjnU3vjQeVAwFVDc47p4-mJ4tdebf8RDkhK1gI0"//sessionStorage.getItem("access-code")
 let data = []
 let problems = []
 let title = ""
@@ -79,7 +79,7 @@ const clickButton = (i) =>{
           {#key pdfUrl}
             {#if pdfUrl !=""}
             <div>
-            <PdfViewer data={null} url={pdfUrl} showButtons={["navigation"]} scale={1.0} />
+            <PdfViewer data={null} url={pdfUrl} showButtons={["navigation","zoom"]} scale={0.7} />
             </div>
             {/if}
           {/key}

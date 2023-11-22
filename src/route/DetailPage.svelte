@@ -5,7 +5,7 @@ import axios from 'axios'
 export let params
 let isOpenedAnswer = false;
 console.log(params.id)
-let accessCode = sessionStorage.getItem("access-code")
+let accessCode ="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDQ0MzEyNjk4ODIwNjA1NjIxMzUiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAwNTUwODg4LCJleHAiOjE3MDExNTU2ODh9.iAkkWJy6ajFGnfET-QUVVJrpry1Xgm39iYwhCT1RmAg" //sessionStorage.getItem("access-code")
 let data = []
 let problems = []
 let title = ""
@@ -14,6 +14,7 @@ let pdfUrl = ""
 let correctList = {}
 let answerList = {}
 let whatWrongList = {}
+let mediaFlieType = ""
   axios.get("https://khumon-edu.kro.kr/api/learning-material/"+params.id,{
       headers:{"Authorization":"Bearer " + accessCode},
     }).then(
@@ -21,7 +22,9 @@ let whatWrongList = {}
         problems= response.data.questionInformations
         summary = response.data.summary
         title = response.data.title
+        mediaFlieType = response.data.mediaFileType
         pdfUrl = response.data.mediaURL
+
         for(let i =0; i<problems.length; i++){
           if(problems[i].myAnswer == null){
             answerList[problems[i].id] = ""
@@ -76,11 +79,24 @@ const clickButton = (i) =>{
 <div class=" flex flex-row">
     <div class="flex flex-col">
         <div class=" justify-center">
+          
           {#key pdfUrl}
             {#if pdfUrl !=""}
+              {#if mediaFlieType == "pdf"}
             <div>
             <PdfViewer data={null} url={pdfUrl} showButtons={["navigation","zoom"]} scale={0.7} />
             </div>
+              {:else if mediaFlieType == "mp4"}
+              <Video src= {pdfUrl} controls class="w-full max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700" trackSrc="flowbite.mp4" />
+              {:else if mediaFlieType == "txt"}
+              <Card size={"lg"} class ="mt-4">
+              <Heading tag = "h3" >텍스트 파일</Heading>
+              <P align={'left'}>{pdfUrl}</P>
+              </Card>
+              {:else}
+
+
+            {/if}
             {/if}
           {/key}
             <!-- <Video src="/videos/sample.mp4" controls class="w-full max-w-full h-auto rounded-3xl border border-gray-200 dark:border-gray-700" trackSrc="flowbite.mp4" /> -->

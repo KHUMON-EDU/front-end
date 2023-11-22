@@ -4,7 +4,7 @@
     import { SpeedDial,P,Search,Button,Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox, TableSearch } from 'flowbite-svelte';
     import {PlusSolid} from 'flowbite-svelte-icons'
     let id = sessionStorage.getItem("id")
-    let accessCode = sessionStorage.getItem("access-code")
+    let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDQ0MzEyNjk4ODIwNjA1NjIxMzUiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAwNTUwODg4LCJleHAiOjE3MDExNTU2ODh9.iAkkWJy6ajFGnfET-QUVVJrpry1Xgm39iYwhCT1RmAg"//sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
     let data = []
   

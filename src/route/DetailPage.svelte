@@ -15,6 +15,7 @@ let correctList = {}
 let answerList = {}
 let whatWrongList = {}
 let mediaFlieType = ""
+let text = ""
   axios.get("https://khumon-edu.kro.kr/api/learning-material/"+params.id,{
       headers:{"Authorization":"Bearer " + accessCode},
     }).then(
@@ -24,7 +25,7 @@ let mediaFlieType = ""
         title = response.data.title
         mediaFlieType = response.data.mediaFileType
         pdfUrl = response.data.mediaURL
-
+        text = response.data.textData
         for(let i =0; i<problems.length; i++){
           if(problems[i].myAnswer == null){
             answerList[problems[i].id] = ""
@@ -91,7 +92,7 @@ const clickButton = (i) =>{
               {:else if mediaFlieType == "txt"}
               <Card size={"lg"} class ="mt-4">
               <Heading tag = "h3" >텍스트 파일</Heading>
-              <P align={'left'}>{pdfUrl}</P>
+              <P align={'left'}>{text}</P>
               </Card>
               {:else}
 

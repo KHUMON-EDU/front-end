@@ -4,18 +4,36 @@
     import { SpeedDial,P,Search,Button,Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox, TableSearch } from 'flowbite-svelte';
     import {PlusSolid} from 'flowbite-svelte-icons'
     let id = sessionStorage.getItem("id")
-    let accessCode = sessionStorage.getItem("access-code")
+    let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDQ0MzEyNjk4ODIwNjA1NjIxMzUiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAyODk1NTgxLCJleHAiOjE3MDM1MDAzODF9.bcjopKxxK7UtFR0EWHpUYlxD6uZ0d-3rAPqyOgibiEw" //sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
-    let data = []
+    let data = {"priorityLearningMaterialContents":[],"content":[]}
   
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
         response => {
-          data = response.data.content
+          data = response.data
           console.log(data)
         }
       )
+
+  const toPriority = (idx) =>{
+    console.log(idx)
+    data.priorityLearningMaterialContents.push(data.content[idx])
+    data.content.splice(idx,1)
+    data =data
+    console.log(data)
+  }
+  
+
+  const toNonPriority = (idx) =>{
+    console.log(idx)
+    data.content.push(data.priorityLearningMaterialContents[idx])
+    data.priorityLearningMaterialContents.splice(idx,1)
+    data = data
+    console.log(data)
+  }
+
 
 </script>
 
@@ -45,7 +63,7 @@
   </Search>
 <Table striped={true} hoverable={true} shadow ={true}>
     <TableHead>
-      <TableHeadCell>-</TableHeadCell>
+      <TableHeadCell>즐겨찾기</TableHeadCell>
       <TableHeadCell>노트 이름</TableHeadCell>
       <TableHeadCell>파일 형태</TableHeadCell>
       <TableHeadCell>문제 개수</TableHeadCell>
@@ -57,9 +75,22 @@
     </TableHead>
     <TableBody tableBodyClass="divide-y">
       {#key data}
-        {#each data as item}
+      {#each data.priorityLearningMaterialContents as item,idx}
+      <TableBodyRow>
+        <TableBodyCell><Checkbox checked on:click={() =>toNonPriority(idx)}></Checkbox></TableBodyCell>
+        <TableBodyCell><a href="#/detail_page/{item.id}" style="color: black;">{item.title}</a></TableBodyCell>
+        <TableBodyCell>{item.type}</TableBodyCell>
+        <TableBodyCell>10개</TableBodyCell>
+        <TableBodyCell>{(new Date(item.createAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+        <TableBodyCell>{(new Date(item.modifiedAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+        <TableBodyCell>
+          <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
+        </TableBodyCell>
+      </TableBodyRow>
+      {/each}
+        {#each data.content as item, idx}
         <TableBodyRow>
-          <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
+          <TableBodyCell><Checkbox on:click={() =>toPriority(idx)}></Checkbox></TableBodyCell>
           <TableBodyCell><a href="#/detail_page/{item.id}" style="color: black;">{item.title}</a></TableBodyCell>
           <TableBodyCell>{item.type}</TableBodyCell>
           <TableBodyCell>10개</TableBodyCell>

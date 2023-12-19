@@ -6,7 +6,7 @@ import { marked } from 'marked'
 export let params
 let isOpenedAnswer = false;
 console.log(params.id)
-let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDQ0MzEyNjk4ODIwNjA1NjIxMzUiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAyODk1NTgxLCJleHAiOjE3MDM1MDAzODF9.bcjopKxxK7UtFR0EWHpUYlxD6uZ0d-3rAPqyOgibiEw" //sessionStorage.getItem("access-code")
+let accessCode = sessionStorage.getItem("access-code")
 let data = []
 let problems = []
 let title = ""

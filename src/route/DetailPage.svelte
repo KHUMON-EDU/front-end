@@ -2,14 +2,15 @@
 import {Helper,Input,Button,Popover,Heading,Video, Card,P} from 'flowbite-svelte';
 import PdfViewer from 'svelte-pdf'
 import axios from 'axios'
+import { marked } from 'marked'
 export let params
 let isOpenedAnswer = false;
 console.log(params.id)
-let accessCode =sessionStorage.getItem("access-code")
+let accessCode = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDQ0MzEyNjk4ODIwNjA1NjIxMzUiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzAyODk1NTgxLCJleHAiOjE3MDM1MDAzODF9.bcjopKxxK7UtFR0EWHpUYlxD6uZ0d-3rAPqyOgibiEw" //sessionStorage.getItem("access-code")
 let data = []
 let problems = []
 let title = ""
-let summary = ""
+let summary = ``
 let pdfUrl = ""
 let correctList = {}
 let answerList = {}
@@ -106,10 +107,10 @@ const clickButton = (i) =>{
         {#if summary !=""}
         <div class=" mt-2 flex flex-col" >
           <div style="display: flex; justify-content: center; align-items: center;">
-            <Card size={"lg"}>
+            <Card size={"lg"} class=" text-left">
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">요약</h5>
-
-                <P align={'left'}>{summary}</P>
+                {@html marked(summary)}
+                <!-- <P align={'left'}>{summary}</P> -->
 
               </Card>
             </div>

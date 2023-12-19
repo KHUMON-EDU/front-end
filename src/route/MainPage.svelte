@@ -19,6 +19,9 @@
 
   const toPriority = (idx) =>{
     console.log(idx)
+    axios.get("https://khumon-edu.kro.kr/api/learning-material/priority/"+data.content[idx].id,{
+        headers:{"Authorization":"Bearer " + accessCode},
+      })
     data.priorityLearningMaterialContents.push(data.content[idx])
     data.content.splice(idx,1)
     data =data
@@ -28,6 +31,9 @@
 
   const toNonPriority = (idx) =>{
     console.log(idx)
+    axios.get("https://khumon-edu.kro.kr/api/learning-material/unpriority/"+data.priorityLearningMaterialContents[idx].id,{
+        headers:{"Authorization":"Bearer " + accessCode},
+      })
     data.content.push(data.priorityLearningMaterialContents[idx])
     data.priorityLearningMaterialContents.splice(idx,1)
     data = data

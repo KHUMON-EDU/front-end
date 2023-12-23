@@ -9,7 +9,8 @@
     let value = null
     let file
     let accessCode = sessionStorage.getItem("access-code")
-  const dropHandle = (event) => {
+    let loading = false
+    const dropHandle = (event) => {
     value = [];
     event.preventDefault();
     if (event.dataTransfer.items) {
@@ -40,20 +41,21 @@
     return name
   };
 
-  function send(){
+  async function send(){
+    loading = true
 
-    axios.post("https://khumon-edu.kro.kr/api/learning-material",{
+    await axios.post("https://khumon-edu.kro.kr/api/learning-material",{
         media:file,
         data:JSON.stringify({"title":title, "content":content})
       },
       {
-        headers:{"Authorization": "Bearer "+sessionStorage.getItem("access-code"),"content-type": "multipart/form-data"},
+        headers:{"Authorization": "Bearer "+accessCode,"content-type": "multipart/form-data"},
       }).then(
         response => {
           console.log(response)
+          window.location.href = '/'
         }
       )
-    window.location.href = '/'
   }
 
   </script>
@@ -98,8 +100,13 @@
     {/if}
   </Dropzone>
 </div>
-
-<Button class = "mt-5 mb-5 h-30" type="submit">업로드</Button>
+{#key loading}
+  {#if loading == true}
+  <Button class = "mt-5 mb-5 h-30" type="submit" disabled >업로드중.....</Button>
+  {:else}
+  <Button class = "mt-5 mb-5 h-30" type="submit">업로드</Button>
+  {/if}
+{/key}
 
 
 </div>

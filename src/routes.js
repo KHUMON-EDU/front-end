@@ -4,6 +4,7 @@ import OauthLogin from "./OauthLogin.svelte";
 import LogOut from "./route/LogOut.svelte"
 import Upload from "./route/Upload.svelte"
 import DetailPage from "./route/DetailPage.svelte"
+import Test from "./route/Test.svelte"
 
 export default {
     "/": LoginPage,
@@ -11,5 +12,6 @@ export default {
     "/oauth2/login" : OauthLogin,
     "/logout" : LogOut,
     "/upload" : Upload,
-    "/detail_page" : DetailPage
+    "/detail_page/:id" : DetailPage,
+    "/test" : Test
 };

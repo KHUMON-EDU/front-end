@@ -6,11 +6,40 @@
     let id = sessionStorage.getItem("id")
     let accessCode = sessionStorage.getItem("access-code")
     let nickName = sessionStorage.getItem("nickName")
+    let data = {"priorityLearningMaterialContents":[],"content":[]}
+  
     axios.get("https://khumon-edu.kro.kr/api/learning-materials",{
         headers:{"Authorization":"Bearer " + accessCode},
       }).then(
-        response => console.log(response)
+        response => {
+          data = response.data
+          console.log(data)
+        }
       )
+
+  const toPriority = (idx) =>{
+    console.log(idx)
+    axios.get("https://khumon-edu.kro.kr/api/learning-material/priority/"+data.content[idx].id,{
+        headers:{"Authorization":"Bearer " + accessCode},
+      })
+    data.priorityLearningMaterialContents.push(data.content[idx])
+    data.content.splice(idx,1)
+    data =data
+    console.log(data)
+  }
+  
+
+  const toNonPriority = (idx) =>{
+    console.log(idx)
+    axios.get("https://khumon-edu.kro.kr/api/learning-material/unpriority/"+data.priorityLearningMaterialContents[idx].id,{
+        headers:{"Authorization":"Bearer " + accessCode},
+      })
+    data.content.push(data.priorityLearningMaterialContents[idx])
+    data.priorityLearningMaterialContents.splice(idx,1)
+    data = data
+    console.log(data)
+  }
+
 
 </script>
 
@@ -33,15 +62,17 @@
   </div>
 </div>
 
+
+
   <Search class="mb-2 mt-2">
     <Button>Search</Button>
   </Search>
 <Table striped={true} hoverable={true} shadow ={true}>
     <TableHead>
-      <TableHeadCell>-</TableHeadCell>
+      <TableHeadCell>즐겨찾기</TableHeadCell>
       <TableHeadCell>노트 이름</TableHeadCell>
       <TableHeadCell>파일 형태</TableHeadCell>
-      <TableHeadCell>문자 개수</TableHeadCell>
+      <TableHeadCell>문제 개수</TableHeadCell>
       <TableHeadCell>만든 날짜</TableHeadCell>
       <TableHeadCell>수정 날짜</TableHeadCell>
       <TableHeadCell>
@@ -49,56 +80,41 @@
       </TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
+      {#key data}
+      {#each data.priorityLearningMaterialContents as item,idx}
       <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell><a href="#/detail_page" style="color: black;">인공지능 프로그래밍</a></TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
+        <TableBodyCell><Checkbox checked on:click={() =>toNonPriority(idx)}></Checkbox></TableBodyCell>
+        <TableBodyCell><a href="#/detail_page/{item.id}" style="color: black;">{item.title}</a></TableBodyCell>
+        <TableBodyCell>{item.type}</TableBodyCell>
+        <TableBodyCell>10개</TableBodyCell>
+        <TableBodyCell>{(new Date(item.createAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+        <TableBodyCell>{(new Date(item.modifiedAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
         <TableBodyCell>
           <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
         </TableBodyCell>
       </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
-      <TableBodyRow>
-        <TableBodyCell><Checkbox></Checkbox></TableBodyCell>
-        <TableBodyCell>인공지능 프로그래밍</TableBodyCell>
-        <TableBodyCell>MP4</TableBodyCell>
-        <TableBodyCell>5개</TableBodyCell>
-        <TableBodyCell>2023.01.03</TableBodyCell>
-        <TableBodyCell>2023.05.06</TableBodyCell>
-        <TableBodyCell>
-          <a href="/tables" class="font-medium text-primary-600 hover:no-underline dark:text-primary-500">삭제</a>
-        </TableBodyCell>
-      </TableBodyRow>
+      {/each}
+        {#each data.content as item, idx}
+        <TableBodyRow>
+          <TableBodyCell><Checkbox on:click={() =>toPriority(idx)}></Checkbox></TableBodyCell>
+          <TableBodyCell><a href="#/detail_page/{item.id}" style="color: black;">{item.title}</a></TableBodyCell>
+          <TableBodyCell>{item.type}</TableBodyCell>
+          <TableBodyCell>10개</TableBodyCell>
+          <TableBodyCell>{(new Date(item.createAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+          <TableBodyCell>{(new Date(item.modifiedAt)).getFullYear()}-{(new Date(item.createAt)).getMonth()}-{(new Date(item.createAt)).getDay()}</TableBodyCell>
+          <TableBodyCell>
+            <a href="/tables" class="font-medium text-primary-600 hover:no-underlinee dark:text-primary-500">삭제</a>
+          </TableBodyCell>
+        </TableBodyRow>
+        {/each}
+        {/key}
     </TableBody>
   </Table>
+
+
 </div>
-
-
 {:else}
+
     <LoginPage />
 
 
